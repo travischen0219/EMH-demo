@@ -111,7 +111,7 @@ export async function POST(req: Request) {
   model.verbose = true;
 
   const replyWithTwilioLimit = isText
-    ? "You reply within 1000 characters."
+    ? "You reply within 1000 Character."
     : "";
 
   const chainPrompt = PromptTemplate.fromTemplate(`
@@ -140,7 +140,7 @@ export async function POST(req: Request) {
     })
     .catch(console.error);
 
-  console.log("result", result);
+  console.log("result", result!.text);
   const chatHistoryRecord = await memoryManager.writeToHistory(
     result!.text + "\n",
     companionKey

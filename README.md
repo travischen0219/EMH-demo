@@ -20,7 +20,7 @@ There are many possible use cases for these companions - romantic (AI girlfriend
 - 💻 [Stack](#stack)
 - 🧠 [Quickstart](#quickstart)
 - 🚀 [How does this work?](#how-does-this-work)
-- 👤 [Adding/modifying characters](#addingmodifying-characters)
+- 👤 [Adding/modifying Character](#addingmodifying-Character)
 - 👩‍💻 [How to contribute to this repo](#how-to-contribute-to-this-repo)
 - 🐍 [Python support](#python-support)
 - 💽 [Exporting your companion to Character.ai](#export-to-characterai)
@@ -69,7 +69,7 @@ npm install
 ### 3. Fill out secrets
 
 ```
-cp .env.local.example .env.local
+cp .env.local.Character .env.local
 ```
 
 Secrets mentioned below will need to be copied to `.env.local`
@@ -183,7 +183,7 @@ h. Now you can text the Twilio phone number from your phone and get a response f
 
 ## How does this work?
 
-1. You describe the character's background story, name, etc in a README.md file. You can find more info on what needs to be included and how to format this in [Adding / modifying characters](#addingmodifying-characters).
+1. You describe the character's background story, name, etc in a README.md file. You can find more info on what needs to be included and how to format this in [Adding / modifying Character](#addingmodifying-Character).
 
 Be as elaborate and detailed as you want - more context often creates a more fun chatting experience. If you need help creating a backstory, we'd recommend asking ChatGPT to expand on what you already know about your companion.
 
@@ -235,7 +235,7 @@ red tape, being in one place for too long, people who are not genuine or authent
 4. Ask questions and have a conversation with your AI companion!
 
 
-## Adding/modifying characters
+## Adding/modifying Character
 
 All character data is stored in the `companions/` directory. To add a companion,
 simply add a description to the list in `companions.json`. You can control the model used
@@ -262,7 +262,7 @@ You can add as many as you want - they'll be stored in the vectordb
 
 ```
 
-The **preamble** is used with every prompt so it should be relatively short. The **seedchat** allows you to provide examples of the characters voice that the model can learn from. And the rest of the file is whatever additional background you want to provide which will be retrieved if relevant to the current discussion.
+The **preamble** is used with every prompt so it should be relatively short. The **seedchat** allows you to provide Character of the Character voice that the model can learn from. And the rest of the file is whatever additional background you want to provide which will be retrieved if relevant to the current discussion.
 
 ## Shortcomings
 
@@ -313,7 +313,7 @@ npm run export-to-character [COMPANION_NAME] [MODEL_NAME] [USER_ID]
 Once you run this script, you will see two files created under the root directory:
 
 - `[COMPANION_NAME]_chat_history.txt`: This outputs all of the chat history stored in Upstash
-- `[COMPANION_NAME_]_character_ai_data.txt`: This outputs the data you need in order to re-create the companion on Character.ai. You can find Character.ai character configurations under "View Character Settings" on any newly-created characters.
+- `[COMPANION_NAME_]_character_ai_data.txt`: This outputs the data you need in order to re-create the companion on Character.ai. You can find Character.ai character configurations under "View Character Settings" on any newly-created Character.
 
 ## Refs
 
