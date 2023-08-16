@@ -1,12 +1,16 @@
 import AudioPlayer from "./AudioPlayer";
 
 export interface IContext {
+    _id: string;
+    user_id: string;
     request: string;
     response: string;
-    audio: string;
-    video: string;
+    audio: string | null;
+    video: string | null;
     updated_at: string;
     created_at: string;
+    parent: string | null;
+    children: string[];
 }
 
 const Context: React.FC<IContext> = (context: IContext) => {
@@ -18,21 +22,32 @@ const Context: React.FC<IContext> = (context: IContext) => {
         </div>
 
         <div className="flex flex-row p-2 items-center justify-center mx-5">
+            {
+                context.children.length > 0 &&
+                <div className="flex flex-col flex-auto mr-5"
+                    style={{minHeight: "7vh"}}
+                >
+                    next
+                </div>
+            }
             <div className="w-full">
                 <div className="rounded-t-xl bg-gray-700 p-4"
                     style={{minHeight: "7vh"}}
                 >
-                    <p className="text-sm text-gray-200">
-                        User: {context.request}
+                    <p className="text-gray-200">
+                        {context.request}
                     </p>
                 </div>
                 <div className="rounded-b-xl bg-gray-800 p-4"
                     style={{minHeight: "7vh"}}
                 >
-                    <p className="text-sm text-gray-200">
-                        Alpha: {context.response}
+                    <p className="text-gray-200">
+                        {context.response}
                         &nbsp;
-                        <AudioPlayer audio={context.audio} />
+                        {
+                            context.audio &&
+                            <AudioPlayer audio={context.audio} />
+                        }
                     </p>
                 </div>
             </div>

@@ -5,6 +5,7 @@ import { IContext } from "./Context";
 import { useUser } from '@clerk/clerk-react';
 import Context from "./Context";
 import Spinner from "./Spinner";
+import { get_context } from "../../utils/mockFetch";
 
 
 export default function ChatRoom({
@@ -43,14 +44,32 @@ export default function ChatRoom({
 
   useEffect(() => {
     if (!user) return;
-    const url = `http://127.0.0.1:8000/api/contexts/${user.id}`;
-    console.log(url);
-    const fetchContexts = async () => {
-      const response = await (await fetch(url)).json();
-      setContexts(response)
+    const fetchContexts = () => {
+      return [{
+        _id: "A",
+        user_id: "xxxx",
+        request: "test_request",
+        response: "test_response",
+        audio: "xxxxx",
+        video: "xxxxx",
+        updated_at: "xxx",
+        created_at: "xxx",
+        parent: null,
+        children: [
+          "B", "C", "G"
+        ],
+      }]
     }
-    fetchContexts();
-    console.log(contexts);
+
+    // const url = `http://127.0.0.1:8000/api/v0/contexts/${user.id}`;
+    // console.log(url);
+    // const fetchContexts = async () => {
+    //   const response = await (await fetch(url)).json();
+    //   setContexts(response)
+    // }
+    const response: IContext[] = fetchContexts();
+    setContexts(response)
+    // console.log(contexts);
   }, [user])
 
 
